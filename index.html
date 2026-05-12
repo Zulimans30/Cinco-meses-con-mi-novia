@@ -69,6 +69,11 @@
 </head>
 <body class="sans">
 
+    <audio id="miMusica" loop>
+    <source src="A Thousand Years — Christina Perri  Sub. Español  Lyrics - cherry subs.mp3" type="audio/mpeg">
+    Tu navegador no soporta el elemento de audio.
+    </audio>
+
     <svg class="hilo-blanco-container" viewBox="0 0 100 100" preserveAspectRatio="none">
         <path id="hilo-blanco-path" class="hilo-blanco-path" d="" />
     </svg>
@@ -107,6 +112,50 @@ Te amo en todos los lenguajes del amor. Prometo aprender a quererte, amarte y re
                 <span class="absolute text-white text-3xl drop-shadow-md">&</span>
             </div>
         </section>
+
+        <div class="text-center my-10 px-6">
+    <p class="serif italic text-xl mb-4">¿Te gustaría saber cuánto te amo?</p>
+    
+    <div class="relative inline-block cursor-pointer" onclick="revelarSecreto()">
+        <p id="texto-secreto" class="text-2xl font-bold opacity-0 transition-opacity duration-500 serif">
+            Te amo doce millones a la decima potencia🤍
+        </p>
+        
+        <div id="corazon-tapa" class="absolute inset-0 flex items-center justify-center bg-[#E0B0FF]">
+            <svg class="w-16 h-16 fill-white drop-shadow-lg animate-bounce" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </svg>
+        </div>
+    </div>
+</div>
+
+<script>
+    function revelarSecreto() {
+    const texto = document.getElementById('texto-secreto');
+    const corazon = document.getElementById('corazon-tapa');
+    const musica = document.getElementById('miMusica');
+
+    // Iniciamos la canción
+    musica.volume = 0.6; // Volumen al 60% para que no sea muy fuerte al inicio
+    musica.play().catch(error => console.log("Error al reproducir:", error));
+
+    // Animación de salida del corazón
+    corazon.style.transition = "all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+    corazon.style.opacity = "0";
+    corazon.style.transform = "scale(2.5) rotate(15deg)"; 
+    
+    setTimeout(() => {
+        corazon.style.display = "none";
+        
+        // Revelamos el texto con un efecto de fundido
+        texto.classList.remove('opacity-0');
+        texto.classList.add('opacity-100');
+        
+        // Opcional: Un pequeño efecto de vibración en el texto al aparecer
+        texto.style.animation = "pulse 2s infinite";
+    }, 600);
+}
+</script>
 
         <section class="p-8 text-center">
             <h2 class="serif text-3xl mb-8 drop-shadow-md italic">Nuestro tiempo juntos</h2>
